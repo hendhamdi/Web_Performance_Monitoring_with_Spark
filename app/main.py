@@ -1,13 +1,10 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import regexp_extract, col, avg, count
 
-# Spark initialization
 spark = SparkSession.builder.appName("WebLogAnalysis").getOrCreate()
 
-# Log diagram
 log_pattern = r'(\S+) - - \[(.*?)\] "(\S+) (\S+) HTTP/1.1" (\d+) (\d+)'
 
-# Loading logs
 import os
 
 data_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../data/access.log"))
@@ -17,7 +14,6 @@ if not os.path.exists(data_path):
 
 df = spark.read.text(data_path)
 
-# Extract important data
 logs_df = df.select(
     regexp_extract("value", log_pattern, 1).alias("ip"),
     regexp_extract("value", log_pattern, 2).alias("timestamp"),

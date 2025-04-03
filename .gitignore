@@ -1,3 +1,11 @@
 logs/
-data/access.log
+data/*.log
+
 __pycache__/
+*.pyc
+
+config.py
+
+.history/
+.vscode/
+.env
