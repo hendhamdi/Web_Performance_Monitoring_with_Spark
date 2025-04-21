@@ -1,11 +1,9 @@
 logs/
 data/*.log
 
-__pycache__/
-*.pyc
+
 
 scripts/config.py
 
 .history/
-.vscode/
 .env
